@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ExternalPercentageMockController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tenpo.prueba.api.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ExternalPercentageMockController (com.tenpo.prueba.api.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ExternalPercentageMockController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tenpo.prueba.api.controller;
+&nbsp;
+&nbsp;import com.tenpo.prueba.infraestructure.dto.ExternalPercentageConfig;
+&nbsp;import com.tenpo.prueba.infraestructure.service.ExternalPercentageService;
+&nbsp;import com.tenpo.prueba.util.Constants;
+&nbsp;import io.swagger.v3.oas.annotations.Operation;
+&nbsp;import io.swagger.v3.oas.annotations.tags.Tag;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.cache.CacheManager;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+&nbsp;import org.springframework.web.bind.annotation.RestController;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/mock/external-percentage&quot;)
+&nbsp;@RequiredArgsConstructor
+&nbsp;@Tag(name = &quot;External Percentage Mock Controller&quot;)
+&nbsp;public class ExternalPercentageMockController {
+&nbsp;
+&nbsp;    private final ExternalPercentageService externalPercentageService;
+&nbsp;    private final CacheManager cacheManager;
+&nbsp;
+&nbsp;    @Operation(summary = &quot;Change values percentage service external&quot;)
+&nbsp;    @PostMapping(&quot;/config&quot;)
+&nbsp;    public ResponseEntity&lt;String&gt; updateMockConfig(@RequestBody ExternalPercentageConfig config) {
+<b class="fc">&nbsp;        externalPercentageService.updateConfig(config.isShouldFail(), config.getFixedPercentage());</b>
+<b class="pc">&nbsp;        if (cacheManager.getCache(Constants.PERCENTAGE_CACHE) != null) {</b>
+<b class="nc">&nbsp;            Objects.requireNonNull(cacheManager.getCache(Constants.PERCENTAGE_CACHE)).clear();</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return ResponseEntity.ok(&quot;Mock config updated&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-04-30 12:47</div>
+</div>
+</body>
+</html>

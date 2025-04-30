@@ -1,0 +1,41 @@
+services:
+
+  db:
+    image: postgres:15.12
+    container_name: tenpo_db
+    restart: always
+    environment:
+      - POSTGRES_DB=tenpo_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_PORT=5432
+    ports:
+      - "9091:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d tenpo_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7.2
+    container_name: tenpo_cache
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: ["redis-server", "--requirepass", "admin123"]
+
+  app:
+    build: .
+    container_name: tenpo_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
