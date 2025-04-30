@@ -13,7 +13,7 @@ docker-compose up --build
 ```
 
 > [!NOTE]
-> Use docker compose, make sure run docker.exe in your PC, in CMD run command:
+> Use docker compose, make sure run docker.exe in your PC.
 
 ## Documentation API
 - Swagger UI: http://localhost:8080/tenpo/swagger-ui/index.html
