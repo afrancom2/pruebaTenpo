@@ -82,6 +82,9 @@ curl --location 'http://localhost:8080/tenpo/history'
 }
 ```
 
+##Coverage 
+![Coverage]([https://mi-sitio.com/logo.png](https://raw.githubusercontent.com/afrancom2/pruebaTenpo/refs/heads/main/src/main/resources/static/coverage.png?token=GHSAT0AAAAAAC5TP6AB7W7L6Y23QVHA3C5C2ASP2PA))
+
 ## Autor
 - Andres Franco 
 - Github: [@afrancom2](https://github.com/afrancom2)
