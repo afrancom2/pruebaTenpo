@@ -29,12 +29,10 @@ class PercentageControllerTest {
 
     @Test
     void shouldReturnSumResult_whenValidRequest() throws Exception {
-        // Arrange
         Double expectedResult = 33.0;
         Mockito.when(calculateService.calculateSum(Mockito.any(SumRequest.class)))
                 .thenReturn(expectedResult);
 
-        // Act & Assert
         mvc.perform(post("/percentage")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -50,11 +48,9 @@ class PercentageControllerTest {
 
     @Test
     void shouldReturnNotFound_whenServiceReturnsNull() throws Exception {
-        // Arrange
         Mockito.when(calculateService.calculateSum(Mockito.any(SumRequest.class)))
                 .thenReturn(null);
 
-        // Act & Assert
         mvc.perform(post("/percentage")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""

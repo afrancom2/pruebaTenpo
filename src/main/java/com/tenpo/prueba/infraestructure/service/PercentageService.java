@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class PercentageService implements IPercentageService {
 
     private final ExternalPercentageService externalPercentageService;
-    private final CacheManager cacheManager; // <-- agregamos CacheManager manual
+    private final CacheManager cacheManager;
 
     private static final String CACHE_NAME = "percentage";
 
@@ -29,7 +29,6 @@ public class PercentageService implements IPercentageService {
                     .percentage(externalPercentage)
                     .build();
 
-            // Guardar en caché manualmente
             Cache cache = cacheManager.getCache(CACHE_NAME);
             if (cache != null) {
                 cache.put(CACHE_NAME, dto);

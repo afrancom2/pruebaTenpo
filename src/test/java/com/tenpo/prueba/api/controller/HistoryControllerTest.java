@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-//@WebMvcTest(controllers = HistoryController.class)
 class HistoryControllerTest {
 
     @Autowired
@@ -40,7 +39,6 @@ class HistoryControllerTest {
 
     @Test
     void shouldReturnPagedHistory() throws Exception {
-        // Arrange
         History h1 = History.builder()
                 .id(1L)
                 .date(LocalDateTime.now())
@@ -56,7 +54,6 @@ class HistoryControllerTest {
         Mockito.when(historyRepository.findAll(Mockito.any(Pageable.class)))
                 .thenReturn(page);
 
-        // Act & Assert
         mvc.perform(get("/history")
                         .param("page", "0")
                         .param("size", "10")
@@ -65,6 +62,5 @@ class HistoryControllerTest {
                 .andExpect(jsonPath("$.content[0].id").value(h1.getId()))
                 .andExpect(jsonPath("$.content[0].endpoint").value(h1.getEndpoint()))
                 .andExpect(jsonPath("$.content[0].response").value(h1.getResponse()));
-                //.andExpect(jsonPath("$.content[0].isError").value(h1.isError()));
     }
 }

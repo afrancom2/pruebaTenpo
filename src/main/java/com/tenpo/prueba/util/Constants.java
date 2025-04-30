@@ -3,7 +3,6 @@ package com.tenpo.prueba.util;
 public class Constants {
 
     private Constants() {
-        // Evitar instanciación
         throw new UnsupportedOperationException("Utility class");
     }
 

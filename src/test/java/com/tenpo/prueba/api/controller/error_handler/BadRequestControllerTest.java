@@ -25,7 +25,6 @@ class BadRequestControllerTest {
 
     @Test
     void shouldHandleForbiddenException_andSaveHistory() {
-        // Arrange
         String uri = "/percentage";
         String queryString = "first=1&second=2";
         String errorMessage = "Forbidden request";
@@ -35,15 +34,11 @@ class BadRequestControllerTest {
 
         ForbiddenException exception = new ForbiddenException();
 
-        // Act
         BaseErrorResponse response = badRequestController.handleForbidden(exception, request);
 
-        // Assert
-        //assertThat(response.getMessage()).isEqualTo(errorMessage);
         assertThat(response.getStatus()).isEqualTo("FORBIDDEN");
         assertThat(response.getCode()).isEqualTo(403);
 
-        // Verifica que se haya llamado a saveHistory con los valores esperados
         verify(historyService, times(1))
                 .saveHistory(uri, queryString, errorMessage, true);
     }

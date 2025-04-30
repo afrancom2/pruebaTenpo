@@ -15,7 +15,6 @@ class PruebaApplicationTests {
 
 	@Test
 	void testMainMethod2() {
-		// Simula la ejecución de la aplicación sin iniciar múltiples veces
 		assertDoesNotThrow(() -> PruebaApplication.main(new String[]{}));
 	}
 

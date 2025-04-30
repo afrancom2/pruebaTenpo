@@ -35,7 +35,6 @@ class ExternalPercentageControllerTest {
 
     @Test
     void shouldUpdateMockConfigSuccessfully() throws Exception {
-        // Arrange
         var config = new ExternalPercentageConfig(true, 15.5);
         var json = objectMapper.writeValueAsString(config);
 
@@ -44,21 +43,18 @@ class ExternalPercentageControllerTest {
         mockCache.clear();
         Mockito.when(cacheManager.getCache("percentage-cache")).thenReturn(mockCache);
 
-        // Act & Assert
         mvc.perform(post("/mock/external-percentage/config")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Mock config updated"));
 
-        // Verify
         Mockito.verify(externalPercentageService).updateConfig(true, 15.5);
         Mockito.verify(mockCache).clear();
     }
 
     @Test
     void shouldUpdateMockConfigSuccessfullys() throws Exception {
-        // Arrange
         var config = new ExternalPercentageConfig(true, 15.5);
         var json = objectMapper.writeValueAsString(config);
 
@@ -66,15 +62,12 @@ class ExternalPercentageControllerTest {
 
         Mockito.when(cacheManager.getCache("percentage")).thenReturn(mockCache);
 
-        // Act & Assert
         mvc.perform(post("/mock/external-percentage/config")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Mock config updated"));
 
-        // Verify
         Mockito.verify(externalPercentageService).updateConfig(true, 15.5);
-        //Mockito.verify(mockCache).clear();
     }
 }
