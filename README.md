@@ -7,7 +7,7 @@
 
 ## Execution project
 ```bash
-git clone https://github.com/afrancom2/...
+git clone https://github.com/afrancom2/pruebaTenpo
 cd prueba tenpo
 docker-compose up --build
 ```
