@@ -82,6 +82,20 @@ curl --location 'http://localhost:8080/tenpo/history'
 }
 ```
 
+#### Curl change values mocks
+```bash
+curl --location 'http://localhost:8080/tenpo/mock/external-percentage/config' \
+--header 'Content-Type: application/json' \
+--data '{
+"shouldFail": false,
+"fixedPercentage": 20.0
+}'
+```
+#### Response curl change values mocks
+```bash
+Mock config updated
+```
+
 ## Coverage 
 
 ![Coverage](https://raw.githubusercontent.com/afrancom2/pruebaTenpo/refs/heads/main/src/main/resources/static/coverage.png?token=GHSAT0AAAAAAC5TP6AB7W7L6Y23QVHA3C5C2ASP2PA)
