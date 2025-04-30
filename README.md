@@ -98,7 +98,7 @@ Mock config updated
 
 ## Coverage 
 
-![Coverage](https://raw.githubusercontent.com/afrancom2/pruebaTenpo/refs/heads/main/src/main/resources/static/coverage.png?token=GHSAT0AAAAAAC5TP6AB7W7L6Y23QVHA3C5C2ASP2PA)
+![Coverage](https://raw.githubusercontent.com/afrancom2/pruebaTenpo/refs/heads/main/src/main/resources/static/coverage.png)
 
 ## Autor
 - Andres Franco 
